@@ -1,9 +1,9 @@
-package com.stepanov.kinopoisk.viewmodel
+package com.stepanov.kinopoisk.viewmodel.films
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.stepanov.kinopoisk.domain.Film
-import com.stepanov.kinopoisk.repository.CallbackRemoteDataSource
+import com.stepanov.kinopoisk.repository.CallbackFilms
 import com.stepanov.kinopoisk.repository.DefaultFilmRepository
 import com.stepanov.kinopoisk.repository.RemoteDataSource
 
@@ -13,7 +13,7 @@ class FilmsViewModel(
     private val defaultFilmRepository: DefaultFilmRepository = DefaultFilmRepository(
         RemoteDataSource()
     )
-) : ViewModel(), CallbackRemoteDataSource {
+) : ViewModel(), CallbackFilms {
 
     fun getLiveData() = liveData
 

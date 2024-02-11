@@ -12,7 +12,7 @@ import java.util.Locale
 
 class FilmsRecyclerViewAdapter(
     private val onFilmClickListener: OnFilmClickListener,
-    private var data: List<Film> = listOf(),
+    private var data: List<Film> = listOf()
 ) : RecyclerView.Adapter<FilmsRecyclerViewAdapter.FilmHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
@@ -41,14 +41,16 @@ class FilmsRecyclerViewAdapter(
     inner class FilmHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(film: Film) {
             FragmentFilmRecyclerItemBinding.bind(itemView).apply {
-                genresViewRecyclerItem.text = film.genres[0].genre.replaceFirstChar {
+                genresViewRecyclerItem.text = film.genres.replaceFirstChar {
                     if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
                 }
+
+
                 nameViewRecyclerItem.text = film.nameRu
                 "(${film.year})".also { yearViewRecyclerItem.text = it }
                 imageViewRecyclerItem.load(film.posterUrlPreview)
                 root.setOnClickListener {
-                    //  onFilmClickListener.onItemClick(film.id)
+                    onFilmClickListener.onItemClick(film.id)
                 }
             }
         }
