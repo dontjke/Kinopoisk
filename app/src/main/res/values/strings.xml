@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Kinopoisk</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="film_title">Film title</string>
+    <string name="content_description">contentDescription</string>
+    <string name="error">loading error no internet connection</string>
+    <string name="loading">Loading</string>
+    <string name="year">year</string>
+    <string name="film_genres">film_genres</string>
 </resources>

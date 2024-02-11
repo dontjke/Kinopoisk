@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Kinopoisk" parent="Base.Theme.Kinopoisk" />
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_radius</item>
+    </style>
 </resources>

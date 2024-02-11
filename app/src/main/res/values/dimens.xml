@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="corner_radius">15dp</dimen>
+    <dimen name="cardView_margin">5dp</dimen>
+    <dimen name="cardView_padding">10dp</dimen>
+    <dimen name="textView_margin">10dp</dimen>
+</resources>
