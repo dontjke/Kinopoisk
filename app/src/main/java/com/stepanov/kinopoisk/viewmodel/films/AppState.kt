@@ -1,4 +1,4 @@
-package com.stepanov.kinopoisk.viewmodel
+package com.stepanov.kinopoisk.viewmodel.films
 
 import com.stepanov.kinopoisk.domain.Film
 

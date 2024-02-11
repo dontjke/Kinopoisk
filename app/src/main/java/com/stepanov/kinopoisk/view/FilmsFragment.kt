@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.stepanov.kinopoisk.R
 import com.stepanov.kinopoisk.databinding.FragmentFilmsBinding
+import com.stepanov.kinopoisk.utils.KEY_BUNDLE_FILM
 import com.stepanov.kinopoisk.view.adapter.FilmsRecyclerViewAdapter
 import com.stepanov.kinopoisk.view.adapter.OnFilmClickListener
-import com.stepanov.kinopoisk.viewmodel.AppState
-import com.stepanov.kinopoisk.viewmodel.FilmsViewModel
+import com.stepanov.kinopoisk.viewmodel.films.AppState
+import com.stepanov.kinopoisk.viewmodel.films.FilmsViewModel
 
 
 class FilmsFragment : Fragment(), OnFilmClickListener {
@@ -62,14 +63,13 @@ class FilmsFragment : Fragment(), OnFilmClickListener {
 
             is AppState.Loading -> {
                 binding.loadingLayout.visibility = View.VISIBLE
-                Snackbar.make(binding.root, getString(R.string.loading), Snackbar.LENGTH_SHORT)
-                    .show()
             }
 
             is AppState.Success -> {
                 binding.loadingLayout.visibility = View.GONE
                 adapter.setData(data.filmsList)
             }
+
         }
     }
 
@@ -84,6 +84,12 @@ class FilmsFragment : Fragment(), OnFilmClickListener {
     }
 
     override fun onItemClick(id: Int) {
-        TODO("Not yet implemented")
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .add(R.id.container, FilmDetailsFragment.newInstance(Bundle().apply {
+                putInt(KEY_BUNDLE_FILM, id)
+            }))
+            .addToBackStack("")
+            .commit()
     }
 }

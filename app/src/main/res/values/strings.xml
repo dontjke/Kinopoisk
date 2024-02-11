@@ -8,4 +8,6 @@
     <string name="loading">Loading</string>
     <string name="year">year</string>
     <string name="film_genres">film_genres</string>
+    <string name="countries">"Страны: "</string>
+    <string name="genres">"Жанры: "</string>
 </resources>

@@ -1,8 +1,6 @@
 package com.stepanov.kinopoisk.repository
 
-import com.stepanov.kinopoisk.domain.Film
-
 interface FilmRepository {
-    fun getFilmsFromServer(callback: CallbackRemoteDataSource)
-    fun getFilmById(id: Int): Film
+    fun getFilmsFromServer(callback: CallbackFilms)
+    fun getFilmById(id: Int, callback: CallbackFilmDetails)
 }

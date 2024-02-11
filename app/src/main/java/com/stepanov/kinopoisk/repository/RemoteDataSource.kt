@@ -1,11 +1,14 @@
 package com.stepanov.kinopoisk.repository
 
+import com.stepanov.kinopoisk.repository.dto.FilmDetailsDTO
 import com.stepanov.kinopoisk.repository.dto.TopDTO
 import com.stepanov.kinopoisk.utils.KINOPOISK_API_KEY
+import com.stepanov.kinopoisk.utils.KINOPOISK_API_TYPE
 import com.stepanov.kinopoisk.utils.KINOPOISK_BASE_URL
 import com.stepanov.kinopoisk.utils.REQUEST_ERROR
 import com.stepanov.kinopoisk.utils.SERVER_ERROR
 import com.stepanov.kinopoisk.utils.toFilm
+import com.stepanov.kinopoisk.utils.toFilmDetails
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,8 +22,8 @@ class RemoteDataSource {
     }.build().create(KinopoiskAPI::class.java)
 
 
-    fun getFilms(callback: CallbackRemoteDataSource) {
-        kinopoiskAPI.loadTopFilms(KINOPOISK_API_KEY)
+    fun getFilms(callback: CallbackFilms) {
+        kinopoiskAPI.loadTopFilms(KINOPOISK_API_KEY, KINOPOISK_API_TYPE)
             .enqueue(object : Callback<TopDTO> {
                 override fun onResponse(call: Call<TopDTO>, response: Response<TopDTO>) {
 
@@ -36,6 +39,26 @@ class RemoteDataSource {
                 }
 
                 override fun onFailure(call: Call<TopDTO>, t: Throwable) {
+                    callback.onFailure(Throwable(SERVER_ERROR))
+                }
+            })
+    }
+
+    fun getFilmDetails(id: Int, callback: CallbackFilmDetails) {
+        kinopoiskAPI.loadFilmDetails(KINOPOISK_API_KEY, id)
+            .enqueue(object : Callback<FilmDetailsDTO> {
+                override fun onResponse(
+                    call: Call<FilmDetailsDTO>,
+                    response: Response<FilmDetailsDTO>
+                ) {
+                    val serverResponse: FilmDetailsDTO? = response.body()
+                    if (response.isSuccessful && serverResponse != null) {
+                        val film = serverResponse.toFilmDetails()
+                        callback.onResponse(film)
+                    }
+                }
+
+                override fun onFailure(call: Call<FilmDetailsDTO>, t: Throwable) {
                     callback.onFailure(Throwable(SERVER_ERROR))
                 }
             })

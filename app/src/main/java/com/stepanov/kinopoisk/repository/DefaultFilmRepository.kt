@@ -1,17 +1,15 @@
 package com.stepanov.kinopoisk.repository
 
-import com.stepanov.kinopoisk.domain.Film
-
 
 class DefaultFilmRepository(
     private val remoteDataSource: RemoteDataSource
 ) : FilmRepository {
 
-    override fun getFilmsFromServer(callback: CallbackRemoteDataSource) {
+    override fun getFilmsFromServer(callback: CallbackFilms) {
         remoteDataSource.getFilms(callback)
     }
 
-    override fun getFilmById(id: Int): Film {
-        TODO("Not yet implemented")
+    override fun getFilmById(id: Int, callback: CallbackFilmDetails) {
+        remoteDataSource.getFilmDetails(id, callback)
     }
 }
