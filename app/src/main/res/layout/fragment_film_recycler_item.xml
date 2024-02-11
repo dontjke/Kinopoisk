@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cardView_margin"
+    app:cardCornerRadius="@dimen/corner_radius"
+    app:contentPadding="@dimen/cardView_padding"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="3dp"
+    tools:context=".view.FilmsFragment"
+    android:orientation="horizontal">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewRecyclerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/nameViewRecyclerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/textView_margin"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/film_title"
+        app:layout_constraintStart_toEndOf="@+id/imageViewRecyclerItem"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yearViewRecyclerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/textView_margin"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/year"
+        app:layout_constraintStart_toEndOf="@+id/genresViewRecyclerItem"
+        app:layout_constraintTop_toBottomOf="@+id/nameViewRecyclerItem"
+         />
+
+    <TextView
+        android:id="@+id/genresViewRecyclerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/textView_margin"
+        android:text="@string/film_genres"
+        app:layout_constraintStart_toEndOf="@+id/imageViewRecyclerItem"
+        app:layout_constraintTop_toBottomOf="@+id/nameViewRecyclerItem" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</com.google.android.material.card.MaterialCardView>
